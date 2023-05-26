@@ -1,0 +1,81 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f1f1f1;
+  }
+  header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+  }
+  
+  nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+  
+  nav ul li {
+    margin-right: 10px;
+  }
+  
+  nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  nav ul li a:hover {
+    color: #ddd;
+  }
+
+  footer {
+    position:absolute;
+    bottom:0;
+    width:100%;
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  footer p {
+    margin: 0;
+  }
+*{
+  box-sizing: border-box;
+}
+.project{
+    background: #bebebe;
+    border: #777777 solid 2px;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+
+}
+p{
+  padding: 20px;
+}
+.flex-container{
+    display: flex;
+    flex-direction: column; /*default is row,there is colum, can also do the reverse*/
+}
+.grid{
+  display: grid;
+  grid-template-columns: auto auto auto; 
+}
+img{
+  width: 50%;
+}
