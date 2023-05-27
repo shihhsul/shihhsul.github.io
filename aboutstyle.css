@@ -46,6 +46,11 @@ img{
   position: relative;
   left: 45%;
 }
+.contact{
+  padding: 10%;
+  position: relative;
+  left: 35%;
+}
 p{
   font-size: 20px;
 }
