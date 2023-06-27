@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact Us</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        h1 {
+            text-align: center;
+        }
+        
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 8px 0;
+            border: none;
+            border-bottom: 1px solid #ccc;
+            background-color: transparent;
+            outline: none;
+        }
+        
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        textarea:focus,
+        select:focus {
+            border-bottom-color: #4CAF50;
+        }
+        
+        label {
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            transition: all 0.3s;
+            pointer-events: none;
+        }
+        
+        input[type="text"]:focus ~ label,
+        input[type="email"]:focus ~ label,
+        textarea:focus ~ label,
+        select:focus ~ label,
+        input[type="text"]:valid ~ label,
+        input[type="email"]:valid ~ label,
+        textarea:valid ~ label,
+        select:valid ~ label {
+            font-size: 12px;
+            bottom: 30px;
+        }
+        
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+    <script src="https://www.google.com/recaptcha/api.js?render=YOUR_RECAPTCHA_SITE_KEY"></script>
+    <script>
+        function onSubmit(token) {
+            document.getElementById("contact-form").submit();
+        }
+    </script>
+</head>
+<body>
+    <h1>Contact Us</h1>
+    <form id="contact-form" action="send_email.php" method="POST">
+        <div class="form-group">
+            <input type="text" id="first-name" name="first-name" required>
+            <label for="first-name">First Name</label>
+        </div>
+        
+        <div class="form-group">
+            <input type="text" id="last-name" name="last-name" required>
+            <label for="last-name">Last Name</label>
+        </div>
+        
+        <div class="form-group">
+            <input type="email" id="email" name="email" required>
+            <label for="email">Email</label>
+        </div>
+        
+        <div class="form-group">
+            <input type="email" id="confirm-email" name="confirm-email" required>
+            <label for="confirm-email">Confirm Email</label>
+        </div>
+        
+        <label for="list">Please select the type of inquiry:</label>
+        <select id="list" name="list">
+            <option value="Item">Item Problem</option>
+            <option value="Payment">Payment Problem</option>
+            <option value="Other">Other</option>
+            <!-- Add more options as needed -->
+        </select><br><br>
+        
+        <div class="form-group">
+            <textarea id="message" name="message" required></textarea>
+            <label for="message">Message</label>
+        </div>
+        
+        <input type="checkbox" id="consent" name="consent" required>
+        <label for="consent">I agree to the privacy policy</label><br><br>
+        
+        <input type="hidden" id="recaptcha-response" name="recaptcha-response">
+        
+        <input type="submit" value="Submit" onclick="event.preventDefault(); validateForm();">
+    </form>
+    <script>
+        function validateForm() {
+            grecaptcha.ready(function() {
+                grecaptcha.execute('YOUR_RECAPTCHA_SITE_KEY', {action: 'submit'}).then(function(token) {
+                    document.getElementById("recaptcha-response").value = token;
+                    onSubmit(token);
+                });
+            });
+        }
+    </script>
+</body>
+</html>
